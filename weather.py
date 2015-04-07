@@ -16,9 +16,9 @@ def countries():
 				countryCode = jsonOutput[1][x]['iso2Code']
 				query = requests.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + countryCode)
 				info = query.json()
-				cityTemp = int(info['main']['temp'])
-				centigrade = int(cityTemp - 273.15)
-				fahrenheit = int((cityTemp * 9/5) - 459.67) 
+				cityTemp = int(info['main']['temp']) #temperature in degrees Kelvin
+				centigrade = int(cityTemp - 273.15) #converts temperature to Centigrade
+				fahrenheit = int((cityTemp * 9/5) - 459.67) #converts temperature to Fahrenheit
 				print "In the capital city of " + jsonOutput[1][x]['capitalCity'] + ", the current temperature is:\n" + str(centigrade) + " degrees Centigrade, or " + str(fahrenheit) + " degrees Fahrenheit.\n"
 		x += 1
 	
